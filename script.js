@@ -72,3 +72,26 @@ console.log(getComputedStyle(message));
 
 message.style.height =
   Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+
+document.documentElement.style.setProperty('--color-primary', 'red');
+
+// Attributes
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt);
+console.log(logo.id);
+
+logo.alt = 'Beautiful minimalit LOGO';
+
+// logo.getAttribute();
+logo.setAttribute('company', 'BankList');
+console.log(logo.src);
+console.log(logo.getAttribute('src'));
+
+// Data Attribute
+console.log(logo.dataset.v);
+
+// Classes
+logo.classList.add('d', 'kk');
+logo.classList.remove('d');
+logo.classList.toggle('d');
+logo.classList.contains('d');
