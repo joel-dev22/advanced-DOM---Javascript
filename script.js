@@ -125,3 +125,13 @@ btnScrollTo.addEventListener('click', function (e) {
   // });
   section1.scrollIntoView({ behavior: 'smooth' });
 });
+
+// Handling events
+const h1 = document.querySelector('h1');
+// h1.addEventListener('mouseenter', e => {
+//   console.log('Reading the header');
+// });
+
+h1.onmouseenter = e => {
+  console.log('Reading the header');
+};
