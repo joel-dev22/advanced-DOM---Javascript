@@ -30,6 +30,15 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+// Implementing Smooth scrolling
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
+
 // Selecting Elements
 /*
 console.log(document.documentElement);
@@ -97,36 +106,33 @@ logo.classList.toggle('d');
 logo.classList.contains('d');
 */
 
-// Implementing Smooth scrolling
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
+// btnScrollTo.addEventListener('click', function (e) {
+//   const s1coords = section1.getBoundingClientRect();
+//   console.log('section1', s1coords);
+//   console.log('learn more', e.target.getBoundingClientRect());
+//   console.log('Current scroll', window.pageXOffset, window.pageYOffset);
+//   console.log(
+//     'height/width viewport',
+//     document.documentElement.clientHeight,
+//     document.documentElement.clientWidth
+//   );
 
-btnScrollTo.addEventListener('click', function (e) {
-  const s1coords = section1.getBoundingClientRect();
-  console.log('section1', s1coords);
-  console.log('learn more', e.target.getBoundingClientRect());
-  console.log('Current scroll', window.pageXOffset, window.pageYOffset);
-  console.log(
-    'height/width viewport',
-    document.documentElement.clientHeight,
-    document.documentElement.clientWidth
-  );
+//   // Scrolling
+//   // window.scrollTo(
+//   //   s1coords.left + window.pageXOffset,
+//   //   s1coords.top + window.pageYOffset
+//   // );
 
-  // Scrolling
-  // window.scrollTo(
-  //   s1coords.left + window.pageXOffset,
-  //   s1coords.top + window.pageYOffset
-  // );
-
-  // window.scrollTo({
-  //   left: s1coords.left + window.pageXOffset,
-  //   top: s1coords.top + window.pageYOffset,
-  //   behavior: 'smooth',
-  // });
-  section1.scrollIntoView({ behavior: 'smooth' });
-});
+//   // window.scrollTo({
+//   //   left: s1coords.left + window.pageXOffset,
+//   //   top: s1coords.top + window.pageYOffset,
+//   //   behavior: 'smooth',
+//   // });
+//   section1.scrollIntoView({ behavior: 'smooth' });
+// });
 
 // Handling events
+/*
 const h1 = document.querySelector('h1');
 // h1.addEventListener('mouseenter', e => {
 //   console.log('Reading the header');
@@ -135,3 +141,25 @@ const h1 = document.querySelector('h1');
 h1.onmouseenter = e => {
   console.log('Reading the header');
 };
+*/
+
+// Generating a random color
+const randInt = (max, min) => Math.floor(Math.random() * (max - min + 1) + min);
+const randColor = () =>
+  `rgb(${randInt(0, 255)}, ${randInt(0, 255)}, ${randInt(0, 255)})`;
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  this.style.backgroundColor = randColor();
+  console.log('CONTAINER', e.target, e.currentTarget);
+});
+
+document.querySelector('.nav__link').addEventListener('click', function (e) {
+  this.style.backgroundColor = randColor();
+  console.log('LINK', e.target, e.currentTarget);
+  e.stopPropagation();
+});
+
+document.querySelector('.nav').addEventListener('click', function (e) {
+  this.style.backgroundColor = randColor();
+  console.log('NAV', e.target, e.currentTarget);
+});
