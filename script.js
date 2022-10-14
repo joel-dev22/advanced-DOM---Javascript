@@ -31,7 +31,7 @@ document.addEventListener('keydown', function (e) {
 });
 
 // Selecting Elements
-
+/*
 console.log(document.documentElement);
 console.log(document.head);
 console.log(document.body);
@@ -95,3 +95,33 @@ logo.classList.add('d', 'kk');
 logo.classList.remove('d');
 logo.classList.toggle('d');
 logo.classList.contains('d');
+*/
+
+// Implementing Smooth scrolling
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  console.log('section1', s1coords);
+  console.log('learn more', e.target.getBoundingClientRect());
+  console.log('Current scroll', window.pageXOffset, window.pageYOffset);
+  console.log(
+    'height/width viewport',
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth
+  );
+
+  // Scrolling
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   s1coords.top + window.pageYOffset
+  // );
+
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
