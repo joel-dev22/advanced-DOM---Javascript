@@ -2,6 +2,8 @@
 
 ///////////////////////////////////////
 // Modal window
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
 
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
@@ -31,12 +33,29 @@ document.addEventListener('keydown', function (e) {
 });
 
 // Implementing Smooth scrolling
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
 
 btnScrollTo.addEventListener('click', function (e) {
-  const s1coords = section1.getBoundingClientRect();
+  // const s1coords = section1.getBoundingClientRect();
   section1.scrollIntoView({ behavior: 'smooth' });
+});
+
+// Page navigation
+// document.querySelectorAll('.nav__link').forEach(el =>
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href');
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   })
+// );
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+
+  // Matching
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
 });
 
 // Selecting Elements
@@ -144,6 +163,7 @@ h1.onmouseenter = e => {
 */
 
 // Generating a random color
+/*
 const randInt = (max, min) => Math.floor(Math.random() * (max - min + 1) + min);
 const randColor = () =>
   `rgb(${randInt(0, 255)}, ${randInt(0, 255)}, ${randInt(0, 255)})`;
@@ -163,3 +183,4 @@ document.querySelector('.nav').addEventListener('click', function (e) {
   this.style.backgroundColor = randColor();
   console.log('NAV', e.target, e.currentTarget);
 });
+*/
