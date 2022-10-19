@@ -40,14 +40,6 @@ btnScrollTo.addEventListener('click', function (e) {
 });
 
 // Page navigation
-// document.querySelectorAll('.nav__link').forEach(el =>
-//   el.addEventListener('click', function (e) {
-//     e.preventDefault();
-//     const id = this.getAttribute('href');
-//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-//   })
-// );
-
 document.querySelector('.nav__links').addEventListener('click', function (e) {
   e.preventDefault();
 
@@ -57,6 +49,42 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
 });
+
+// Tabbed component
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+tabsContainer.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.operations__tab');
+  console.log(clicked);
+
+  // Guard clause
+  if (!clicked) return;
+
+  // Remove active classes
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+
+  tabsContent.forEach(content =>
+    content.classList.remove('operations__content--active')
+  );
+
+  // Active tab
+  clicked.classList.add('operations__tab--active');
+
+  // Active Content area
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
+});
+
+// document.querySelectorAll('.nav__link').forEach(el =>
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href');
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   })
+// );
 
 // Selecting Elements
 /*
@@ -186,6 +214,7 @@ document.querySelector('.nav').addEventListener('click', function (e) {
 */
 
 // DOM Traversing
+/*
 const h1 = document.querySelector('h1');
 
 // Going downwards: child
@@ -211,3 +240,4 @@ console.log(h1.parentElement.children);
 [...h1.parentElement.children].forEach(el => {
   if (el !== h1) el.style.transform = 'scale(.5)';
 });
+*/
