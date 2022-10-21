@@ -98,6 +98,14 @@ const handleHover = function (e) {
 nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
 
+// Sticky navigation
+const initalCoords = section1.getBoundingClientRect();
+
+window.addEventListener('scroll', function () {
+  if (window.scrollY > initalCoords.top) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+});
+
 // document.querySelectorAll('.nav__link').forEach(el =>
 //   el.addEventListener('click', function (e) {
 //     e.preventDefault();
